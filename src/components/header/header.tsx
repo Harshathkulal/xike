@@ -12,7 +12,6 @@ const Header = () => {
   const [showMenu, setShowMenu] = useState(true);
   const [sidenav, setSidenav] = useState(false);
   const [category, setCategory] = useState(false);
-  const [brand, setBrand] = useState(false);
   const location = useLocation();
   useEffect(() => {
     const ResponsiveMenu = () => {
@@ -72,22 +71,16 @@ const Header = () => {
             {sidenav && (
               <div className="fixed top-0 left-0 w-full h-screen text-black z-20">
                 <div className="fixed top-0 right-0 w-[80%] h-full bg-white z-30 shadow-lg">
-                <button
+                  <button
                     onClick={() => setSidenav(false)}
                     className="text-black right-2 absolute m-2 top-2"
                   >
-                    <MdClose size={24}/>
+                    <MdClose size={24} />
                   </button>
                   <div className="w-full h-full p-6">
-                    
-                    
                     <ul className="text-black flex flex-col gap-2">
-                    
                       <li className="font-bold items-center text-lg text-black hover:underline underline-offset-[4px] decoration-[1px]   hoverEffect">
-                        <NavLink
-                          to={"login"}
-                          onClick={() => setSidenav(false)}
-                        >
+                        <NavLink to={"login"} onClick={() => setSidenav(false)}>
                           Login
                         </NavLink>
                       </li>
@@ -111,7 +104,6 @@ const Header = () => {
                       )}
                     </div>
                   </div>
-                  
                 </div>
               </div>
             )}
