@@ -1,11 +1,121 @@
-import React from 'react'
+import React from "react";
+
+const cartItems = [
+  {
+    id: 1,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/a6432319-892e-4dac-a3fd-de0a1609220d/air-force-1-07-lv8-shoes-2gP9Bc.png",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "13000",
+    color: "Black",
+  },
+];
 
 const Cart = () => {
   return (
-    <div>
-      cart
-    </div>
-  )
-}
+    <>
+      <div></div>
+      <h1 className="">Shopping Cart</h1>
 
-export default Cart
+      {cartItems.length === 0 ? (
+        <div className="text-center">
+          <p className="mt-14 p-8">There are no items in your bag.</p>
+          <a href="/">
+            <button
+              type="button"
+              className="font-medium text-indigo-600 hover:text-indigo-500 "
+            >
+              Shop Now <span aria-hidden="true">&rarr;</span>
+            </button>
+          </a>
+          <div className="pb-96"></div>
+        </div>
+      ) : (
+        <div className="flex flex-col md:flex-row gap-12">
+          <div className="flex flex-col flex-auto">
+            <div className="mt-4">
+              <ul role="list" className="divide-y divide-gray-200 w-full">
+                {cartItems.map((cartItem, index) => (
+                  <li key={index} className="flex gap-6 p-6">
+                    <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                      <img
+                        src={cartItem.img}
+                        className="h-full w-full object-cover object-center"
+                        alt={cartItem.name}
+                      />
+                    </div>
+                    <div className="ml-4 flex-1 flex flex-col justify-between">
+                      <div className="flex justify-between items-center">
+                        <h3>{cartItem.name}</h3>
+                        <p className="ml-4">{cartItem.cost}</p>
+                      </div>
+                      <div className="flex justify-between items-center text-sm">
+                        <p>Qty {cartItem.quantity || 0}</p>{" "}
+                        {/* Use default value 0 if quantity is undefined */}
+                        <button
+                          type="button"
+                          //onClick={() => handleRemove(cartItem)}
+                          className="font-medium text-indigo-600 hover:text-indigo-500"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="">
+            <div className="flex flex-col gap-6 items-center md:items-end divide-y divide-gray-200">
+              <h2 className="text-left text-lg font-semibold mb-4">
+                Order Summary
+              </h2>
+              <div className="flex justify-between text-base font-medium w-full mb-2">
+                <p>Subtotal</p>
+                <p>₹{500}</p>
+              </div>
+              <div className="flex justify-between text-base font-medium w-full mb-2">
+                <p>Estimated Tax (18%)</p>
+                <p>₹{4}</p>
+              </div>
+              <div className="flex justify-between text-lg font-semibold w-full">
+                <p>Order Total</p>
+                <p>₹{200}</p>
+              </div>
+
+              <p className="mt-1 text-sm w-full">
+                Shipping and taxes calculated at checkout.
+              </p>
+              <div className="mt-4 pt-4"></div>
+              <div className="mt-6">
+                <a
+                  href="/checkout"
+                  className="flex items-center justify-center rounded-md  bg-indigo-600 px-6 py-3  font-medium text-white  hover:bg-indigo-700"
+                >
+                  Checkout
+                </a>
+              </div>
+              <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+                <p>
+                  or
+                  <button
+                    type="button"
+                    className="font-medium text-indigo-600 hover:text-indigo-500"
+                  >
+                    Continue Shopping <span aria-hidden="true">&rarr;</span>
+                  </button>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default Cart;

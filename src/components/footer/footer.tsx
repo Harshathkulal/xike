@@ -1,75 +1,107 @@
 import { useState } from "react";
-//import { motion } from "framer-motion";
-import { FaFacebook, FaYoutube, FaLinkedin, FaGithub } from "react-icons/fa";
-import FooterListTitle from "./footerListTitle";
-//import { paymentCard } from "../../../assets/images";
-//import Image from "../../designLayouts/Image";
+import { FaFacebook, FaYoutube, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
-  const [emailInfo, setEmailInfo] = useState("");
-  const [subscription, setSubscription] = useState(false);
-  const [errMsg, setErrMsg] = useState("");
+  const [help, setHelp] = useState(false);
+  const [company, setCompany] = useState(false);
 
   return (
-    <div className="w-full bg-black text-white py-10">
-      <div className="footer1">
-        <div className="footer2 flex justify-between m-2">
+    <div className="w-full bg-black text-white py-4">
+      <div className="footer1 m-2 ">
+        <div className="footer2 flex justify-between m-2 flex-col lg:flex-row gap-6 ">
           <div>
-          <ul className="">
-            <li className="text-bold">FIND A STORE</li>
-            <li className="text-bold">BECOME A MEMBER</li>
-            <li className="text-bold">Send Us Feedback</li>
-          </ul>
+            <ul className="font-medium space-y-2">
+              <li className="text-bold">FIND A STORE</li>
+              <li className="text-bold">BECOME A MEMBER</li>
+              <li className="text-bold ">Send Us Feedback</li>
+            </ul>
           </div>
 
-          <div>
-          <ul className="">
-            <li className="text-bold">HELP</li>
-            <li className="text-bold">BECOME A MEMBER</li>
-            <li className="text-bold">Send Us Feedback</li>
-          </ul>
+          <div className="space-y-3 ">
+            <p className="font-medium flex justify-between ">
+              HELP{" "}
+              <span
+                className="text-lg lg:hidden"
+                onClick={() => setHelp(!help)}
+              >
+                {help ? "-" : "+"}
+              </span>
+            </p>
+            {help && (
+              <ul className="font-medium text-gray-500 space-y-2">
+                <li className="text-xs hover:text-white">Get Help</li>
+                <li className="text-xs hover:text-white">Order Status</li>
+                <li className="text-xs hover:text-white">Returns</li>
+                <li className="text-xs hover:text-white">Payment Options</li>
+              </ul>
+            )}
+            <ul className="font-medium text-gray-500 space-y-2 hidden lg:block">
+              <li className="text-xs hover:text-white">Get Help</li>
+              <li className="text-xs hover:text-white">Order Status</li>
+              <li className="text-xs hover:text-white">Returns</li>
+              <li className="text-xs hover:text-white">Payment Options</li>
+            </ul>
           </div>
 
-          <div>
-          <ul className="">
-            <li className="text-bold">COMPANY</li>
-            <li className="text-bold">BECOME A MEMBER</li>
-            <li className="text-bold">Send Us Feedback</li>
-          </ul>
+          <div className="space-y-3">
+            <div className="font-medium flex justify-between">
+              COMPANY{" "}
+              <span
+                className="text-lg lg:hidden"
+                onClick={() => setCompany(!company)}
+              >
+                {company ? "-" : "+"}
+              </span>
+            </div>
+            {company && (
+              <ul className="font-medium text-gray-500 space-y-2">
+                <li className="text-xs hover:text-white">About Xike</li>
+                <li className="text-xs hover:text-white">News</li>
+                <li className="text-xs hover:text-white">Careers</li>
+              </ul>
+            )}
+            <ul className="font-medium text-gray-500 space-y-2 hidden lg:block">
+              <li className="text-xs hover:text-white">About Xike</li>
+              <li className="text-xs hover:text-white">News</li>
+              <li className="text-xs hover:text-white">Careers</li>
+            </ul>
           </div>
 
+          <div className="flex gap-4">
+            <FaFacebook />
+            <FaInstagram />
+            <FaTwitter />
+            <FaYoutube />
+          </div>
         </div>
 
-        <div className="flex justify-between m-2">
-        <span className="text-sm text-gray-500 sm:text-center">
-          © 2024 Xike, Inc. All rights reserved.
-        </span>
-        <ul className=" flex-wrap items-center mt-3 text-sm font-medium text-gray-500 sm:mt-0 hidden lg:flex">
-          <li>
-            <a href="#" className="hover:text-white me-4 md:me-6">
-            Guides
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-white me-4 md:me-6">
-              
-Terms of Sale
-
-
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-white me-4 md:me-6">
-            Terms of Use
-            </a>
-          </li>
-          <li>
-            <a href="#" className="hover:text-white">
-            Nike Privacy Policy
-            </a>
-          </li>
-        </ul>
-      </div>
+        <div className="flex justify-between m-2 mb-0 flex-col lg:flex-row gap-2 mt-10">
+          <span className="text-sm text-gray-500 sm:text-center">
+            © 2024 Xike, Inc. All rights reserved.
+          </span>
+          <ul className="text-sm font-medium text-gray-500 flex flex-col lg:flex-row gap-4 mt-2">
+            <li>
+              <a href="#" className="hover:text-white me-4 md:me-6">
+                Guides
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white me-4 md:me-6">
+                Terms of Sale
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white me-4 md:me-6">
+                Terms of Use
+              </a>
+            </li>
+            <li>
+              <a href="#" className="hover:text-white">
+                Xike Privacy Policy
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
