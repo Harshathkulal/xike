@@ -1,20 +1,29 @@
+import { products } from "../../data/product.ts";
+import { useParams } from "react-router-dom";
 
-const Shoedetail = (props) => {
-    const product=props;
-    console.log(props)
-    console.log(product)
+const Shoedetail = () => {
+  const { id } = useParams<{ id: string }>();
+  const product = products.find((p) => p.id.toString() === id);
+
+  if (!product) {
+    return <div>No product found for this ID</div>;
+  }
+
   return (
-    <div>
+    <div className="flex">
       <div>
-        image
-        <img src={product.img} alt="" />
+        <img src={product.imageSrc} alt={product.imageAlt} />
       </div>
 
       <div>
-        product info
+        <p>Name: {product.name}</p>
+        <p>Mens Shoe</p>
+        <p>Price: {product.price}</p>
+        <p>incl. of taxes</p>
+        <p>(Also includes all applicable duties)</p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Shoedetail
+export default Shoedetail;
