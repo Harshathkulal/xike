@@ -1,4 +1,6 @@
-import React from "react";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { IoMdHeartEmpty } from "react-icons/io";
+import { FaCircleInfo } from "react-icons/fa6";
 
 const cartItems = [
   {
@@ -8,113 +10,117 @@ const cartItems = [
     imageSrc:
       "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/a6432319-892e-4dac-a3fd-de0a1609220d/air-force-1-07-lv8-shoes-2gP9Bc.png",
     imageAlt: "Front of men's Basic Tee in black.",
-    price: "13000",
+    price: "13000.00",
     color: "Black",
+    quantity: "2",
+  },
+  {
+    id: 1,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/a6432319-892e-4dac-a3fd-de0a1609220d/air-force-1-07-lv8-shoes-2gP9Bc.png",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "13000.00",
+    color: "Black",
+    quantity: "2",
+  },
+  {
+    id: 1,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/a6432319-892e-4dac-a3fd-de0a1609220d/air-force-1-07-lv8-shoes-2gP9Bc.png",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "13000.00",
+    color: "Black",
+    quantity: "2",
+  },
+  {
+    id: 1,
+    name: "Basic Tee",
+    href: "#",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/a6432319-892e-4dac-a3fd-de0a1609220d/air-force-1-07-lv8-shoes-2gP9Bc.png",
+    imageAlt: "Front of men's Basic Tee in black.",
+    price: "13000.00",
+    color: "Black",
+    quantity: "2",
   },
 ];
 
 const Cart = () => {
   return (
-    <>
-      <div></div>
-      <h1 className="">Shopping Cart</h1>
+    <div className="flex flex-wrap m-2 mt-8 justify-center gap-10">
+      <div className="flex flex-col">
+        <h1 className="text-2xl font-semibold">Bag</h1>
+        <div className="flex mt-4 flex-col divide-y divide-gray-300">
+          {cartItems.map((cartItem) => (
+            <div className="flex mt-4 pt-4">
+              <div>
+                <img className="h-36 w-36" src={cartItem.imageSrc} alt="" />
+              </div>
 
-      {cartItems.length === 0 ? (
-        <div className="text-center">
-          <p className="mt-14 p-8">There are no items in your bag.</p>
-          <a href="/">
-            <button
-              type="button"
-              className="font-medium text-indigo-600 hover:text-indigo-500 "
-            >
-              Shop Now <span aria-hidden="true">&rarr;</span>
-            </button>
+              <div className="ml-4 ">
+                <div className="flex justify-between flex-col-reverse lg:flex-row font-semibold">
+                  <h3>{cartItem.name}</h3>
+                  <p className="gap-2">MRP: ₹ {cartItem.price}</p>
+                </div>
+
+                <p className="font-medium text-gray-500">Men's Golf Shoes</p>
+                <p className="font-medium text-gray-500 mt-2">Quantity 1</p>
+
+                <div className="flex gap-4 lg:pr-96 mt-8">
+                  <div>
+                    <IoMdHeartEmpty size={22} />
+                  </div>
+                  <div>
+                    <RiDeleteBin6Line size={22} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-3 ">
+        <h1 className="text-2xl font-semibold">Summary</h1>
+        <div className="flex justify-between font-medium text-lg">
+          <div className="flex gap-2 justify-center items-center">
+            Subtotal <FaCircleInfo size={12} className="cursor-pointer" />
+          </div>
+
+          <span> ₹{120000}</span>
+        </div>
+        <div className="flex justify-between font-medium mb-4 text-lg">
+          <p>Estimated Delivery & Handling</p>
+          <span> ₹{1200}</span>
+        </div>
+        <div className="border-t border-slate-300"></div>
+
+        <div className="flex justify-between font-medium text-lg">
+          <p>Total</p>
+          <span> ₹{12500}</span>
+        </div>
+        <div className="border-t border-slate-300"></div>
+        <div className="flex flex-col gap-4 mt-10 mb-4">
+          <a
+            href="/signup"
+            className="rounded-full bg-black text-white font-medium px-24 p-3 text-lg"
+          >
+            Go to Checkout
           </a>
-          <div className="pb-96"></div>
-        </div>
-      ) : (
-        <div className="flex flex-col md:flex-row gap-12">
-          <div className="flex flex-col flex-auto">
-            <div className="mt-4">
-              <ul role="list" className="divide-y divide-gray-200 w-full">
-                {cartItems.map((cartItem, index) => (
-                  <li key={index} className="flex gap-6 p-6">
-                    <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                      <img
-                        src={cartItem.img}
-                        className="h-full w-full object-cover object-center"
-                        alt={cartItem.name}
-                      />
-                    </div>
-                    <div className="ml-4 flex-1 flex flex-col justify-between">
-                      <div className="flex justify-between items-center">
-                        <h3>{cartItem.name}</h3>
-                        <p className="ml-4">{cartItem.cost}</p>
-                      </div>
-                      <div className="flex justify-between items-center text-sm">
-                        <p>Qty {cartItem.quantity || 0}</p>{" "}
-                        {/* Use default value 0 if quantity is undefined */}
-                        <button
-                          type="button"
-                          //onClick={() => handleRemove(cartItem)}
-                          className="font-medium text-indigo-600 hover:text-indigo-500"
-                        >
-                          Remove
-                        </button>
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
 
-          <div className="">
-            <div className="flex flex-col gap-6 items-center md:items-end divide-y divide-gray-200">
-              <h2 className="text-left text-lg font-semibold mb-4">
-                Order Summary
-              </h2>
-              <div className="flex justify-between text-base font-medium w-full mb-2">
-                <p>Subtotal</p>
-                <p>₹{500}</p>
-              </div>
-              <div className="flex justify-between text-base font-medium w-full mb-2">
-                <p>Estimated Tax (18%)</p>
-                <p>₹{4}</p>
-              </div>
-              <div className="flex justify-between text-lg font-semibold w-full">
-                <p>Order Total</p>
-                <p>₹{200}</p>
-              </div>
-
-              <p className="mt-1 text-sm w-full">
-                Shipping and taxes calculated at checkout.
-              </p>
-              <div className="mt-4 pt-4"></div>
-              <div className="mt-6">
-                <a
-                  href="/checkout"
-                  className="flex items-center justify-center rounded-md  bg-indigo-600 px-6 py-3  font-medium text-white  hover:bg-indigo-700"
-                >
-                  Checkout
-                </a>
-              </div>
-              <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
-                <p>
-                  or
-                  <button
-                    type="button"
-                    className="font-medium text-indigo-600 hover:text-indigo-500"
-                  >
-                    Continue Shopping <span aria-hidden="true">&rarr;</span>
-                  </button>
-                </p>
-              </div>
-            </div>
-          </div>
+          <a
+            href="/signup"
+            className="rounded-full bg-black text-white font-medium px-24 p-3 text-lg hidden lg:block"
+          >
+            Member Checkout
+          </a>
         </div>
-      )}
-    </>
+      </div>
+    </div>
   );
 };
 

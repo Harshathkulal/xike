@@ -37,7 +37,7 @@ const Header = () => {
               <NavLink className="font-medium" to={"shoe"}>
                 New & Featured
               </NavLink>
-              <NavLink className="font-medium" to={"shoe"}>
+              <NavLink className="font-medium" to={"shoe/men"}>
                 Men
               </NavLink>
               <NavLink className="font-medium" to={"shoe"}>
@@ -124,9 +124,11 @@ const Header = () => {
                 </button>
                 <div className="p-6 mt-14">
                   <ul className="flex flex-col font-semibold text-xl leading-relaxed gap-6">
+                    <a href="/shoe">
                     <li className="flex items-center justify-between">
                       New & Featured <IoIosArrowForward size={20} />
                     </li>
+                    </a>
                     <li className="flex items-center justify-between">
                       Men <IoIosArrowForward size={20} />
                     </li>
