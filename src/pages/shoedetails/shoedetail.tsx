@@ -6,7 +6,7 @@ const Shoedetail = () => {
   const { id } = useParams<{ id: string }>();
   const product = products.find((e) => e.id.toString() === id);
 
-  const sizes = [
+  const sizes: string[] = [
     "UK 6",
     "UK 7",
     "UK 7.5",
@@ -16,9 +16,9 @@ const Shoedetail = () => {
     "9.5",
     "UK 10",
   ];
-  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
-  const handleSelectSize = (sizes) => {
+  const handleSelectSize = (sizes: string | null) => {
     setSelectedSize(sizes);
   };
 
@@ -27,8 +27,18 @@ const Shoedetail = () => {
   }
 
   return (
-    <div className="flex mt-10 lg:p-5 justify-center flex-wrap">
-      <div className="flex gap-2 ">
+    <div className="flex mt-10 lg:p-5 justify-between lg:justify-around m-4 flex-wrap">
+      <div className="lg:hidden">
+        <p className="text-2xl font-medium">{product.name}</p>
+        <p className="font-medium">Men's Shoes</p>
+        <p className="mt-3 font-semibold text-lg">MRP: ₹{product.price}</p>
+        <p className="text-gray-500 font-medium">incl. of taxes</p>
+        <p className="text-gray-500 font-medium">
+          (Also includes all applicable duties)
+        </p>
+      </div>
+
+      <div className="flex gap-2 mt-4">
         <div className="lg:flex flex-col gap-2 hidden">
           <img
             className="w-16 h-16 rounded-lg "
@@ -56,35 +66,55 @@ const Shoedetail = () => {
       </div>
 
       <div className="flex flex-col">
-        <p>Name: {product.name}</p>
-        <p>Mens Shoe</p>
-        <p>Price: {product.price}</p>
-        <p>incl. of taxes</p>
-        <p>(Also includes all applicable duties)</p>
+        <div className="hidden lg:block">
+          <p className="text-2xl">{product.name}</p>
+          <p className="font-medium">Men's Shoes</p>
+          <p className="mt-3 font-semibold text-lg">MRP: ₹{product.price}</p>
+          <p className="text-gray-500 font-medium">incl. of taxes</p>
+          <p className="text-gray-500 font-medium">
+            (Also includes all applicable duties)
+          </p>
+        </div>
 
-        <div>
-          <h3 className="text-lg font-semibold mb-2">Select Size:</h3>
-          <div className="flex flex-wrap gap-4">
-            {sizes.map((size, index) => (
-              <button
-                key={index}
-                onClick={() => handleSelectSize(size)}
-                className={`border rounded-md px-6 p-2 ${
-                  selectedSize === size ? "border-2 border-black" : "bg-white"
-                }`}
-              >
-                {size}
-              </button>
-            ))}
+        <div className="lg:mt-20 mt-8">
+          <div className="flex justify-between mx-4">
+            <h3 className="text-lg font-semibold mb-2">Select Size</h3>
+            <h3 className="text-lg font-semibold mb-2 text-gray-500">
+              Size Guide
+            </h3>
+          </div>
+          <div>
+            <div className="grid grid-cols-3 gap-1">
+              {sizes.map((size, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleSelectSize(size)}
+                  className={`border rounded-md px-6 p-2 ${
+                    selectedSize === size ? "border-2 border-black" : "bg-white"
+                  }`}
+                >
+                  {size}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
-        <div>
-          <a
-            href="/signup"
-            className="rounded-full bg-black text-white font-medium px-24 p-3 text-lg"
-          >
-            Go to Checkout
-          </a>
+        <div className="my-10">
+          <div className="flex flex-col gap-3">
+            <a
+              href="/signup"
+              className="rounded-full bg-black text-white font-medium px-28 p-3 py-4 text-lg"
+            >
+              Add to Bag
+            </a>
+
+            <a
+              href="/signup"
+              className="rounded-full text-black border border-black font-medium px-28 p-3 py-4 text-lg"
+            >
+              Favourite
+            </a>
+          </div>
         </div>
       </div>
     </div>
