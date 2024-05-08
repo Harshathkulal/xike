@@ -27,7 +27,7 @@ const Shoedetail = () => {
   }
 
   return (
-    <div className="flex mt-10 lg:p-5 justify-between lg:justify-around m-4 flex-wrap">
+    <div className="flex mt-10 lg:p-5 justify-between lg:justify-around m-4 flex-wrap lg:px-24">
       <div className="lg:hidden">
         <p className="text-2xl font-medium">{product.name}</p>
         <p className="font-medium">Men's Shoes</p>
@@ -61,8 +61,13 @@ const Shoedetail = () => {
             alt={product.imageAlt}
           />
         </div>
-
-        <img src={product.imageSrc} alt={product.imageAlt} />
+        <div>
+          <img
+            className="size-96 rounded-lg"
+            src={product.imageSrc}
+            alt={product.imageAlt}
+          />
+        </div>
       </div>
 
       <div className="flex flex-col">
@@ -101,19 +106,13 @@ const Shoedetail = () => {
         </div>
         <div className="my-10">
           <div className="flex flex-col gap-3">
-            <a
-              href="/signup"
-              className="rounded-full bg-black text-white font-medium px-28 p-3 py-4 text-lg"
-            >
+            <div className="rounded-full bg-black text-white font-medium px-28 p-3 py-4 text-lg">
               Add to Bag
-            </a>
+            </div>
 
-            <a
-              href="/signup"
-              className="rounded-full text-black border border-black font-medium px-28 p-3 py-4 text-lg"
-            >
+            <div className="rounded-full text-black border border-black font-medium px-28 p-3 py-4 text-lg">
               Favourite
-            </a>
+            </div>
           </div>
         </div>
       </div>

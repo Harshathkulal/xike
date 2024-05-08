@@ -69,7 +69,10 @@ const Header = () => {
 
           {search && (
             <div>
-              <div className="fixed top-0 left-0 w-full h-screen bg-gray-900 bg-opacity-50 z-20 transition ease-in-out duration-300"></div>
+              <div
+                onClick={toggleSearch}
+                className="fixed top-0 left-0 w-full h-screen bg-gray-900 bg-opacity-60 blur z-20 transition ease-in-out duration-300"
+              ></div>
               <div className="fixed top-0 left-0  w-screen h-60 bg-white z-30 shadow-lg transition ease-in-out duration-300">
                 <div className="flex justify-center items-center gap-4 mt-4">
                   <div className="flex border-black border-2 bg-[#f5f5f5] rounded-full items-center w-2/3">
@@ -125,9 +128,9 @@ const Header = () => {
                 <div className="p-6 mt-14">
                   <ul className="flex flex-col font-semibold text-xl leading-relaxed gap-6">
                     <a href="/shoe">
-                    <li className="flex items-center justify-between">
-                      New & Featured <IoIosArrowForward size={20} />
-                    </li>
+                      <li className="flex items-center justify-between">
+                        New & Featured <IoIosArrowForward size={20} />
+                      </li>
                     </a>
                     <li className="flex items-center justify-between">
                       Men <IoIosArrowForward size={20} />
