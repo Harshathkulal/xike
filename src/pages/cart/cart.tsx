@@ -1,55 +1,28 @@
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { FaCircleInfo } from "react-icons/fa6";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { removeFromCart } from "../../redux/cartSlice";
 
-const cartItems = [
-  {
-    id: 1,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/a6432319-892e-4dac-a3fd-de0a1609220d/air-force-1-07-lv8-shoes-2gP9Bc.png",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "13000.00",
-    color: "Black",
-    quantity: "2",
-  },
-  {
-    id: 1,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/a6432319-892e-4dac-a3fd-de0a1609220d/air-force-1-07-lv8-shoes-2gP9Bc.png",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "13000.00",
-    color: "Black",
-    quantity: "2",
-  },
-  {
-    id: 1,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/a6432319-892e-4dac-a3fd-de0a1609220d/air-force-1-07-lv8-shoes-2gP9Bc.png",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "13000.00",
-    color: "Black",
-    quantity: "2",
-  },
-  {
-    id: 1,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/a6432319-892e-4dac-a3fd-de0a1609220d/air-force-1-07-lv8-shoes-2gP9Bc.png",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "13000.00",
-    color: "Black",
-    quantity: "2",
-  },
-];
+export interface CartItem {
+  id: number;
+  name: string;
+  imageSrc: string;
+  price: number;
+  quantity: number;
+}
 
 const Cart = () => {
+  const cartItems = useAppSelector((state) => state.cart.cartItems);
+  const dispatch = useAppDispatch();
+  console.log(cartItems);
+
+  const handleRemove = (cartItem: CartItem) => {
+
+      dispatch(removeFromCart(cartItem));
+   
+  };
+
   return (
     <div className="flex flex-wrap m-2 mt-8 justify-center gap-10">
       <div className="flex flex-col">
@@ -68,15 +41,18 @@ const Cart = () => {
                 </div>
 
                 <p className="font-medium text-gray-500">Men's Golf Shoes</p>
-                <p className="font-medium text-gray-500 mt-2">Quantity 1</p>
+                <p className="font-medium text-gray-500 mt-2">Quantity:{cartItem.quantity}</p>
 
                 <div className="flex gap-4 lg:pr-96 mt-8">
-                  <div>
+                  <button>
                     <IoMdHeartEmpty size={22} />
-                  </div>
-                  <div>
-                    <RiDeleteBin6Line size={22} />
-                  </div>
+                  </button>
+                  <button className="cursor-pointer">
+                    <RiDeleteBin6Line
+                      onClick={() => handleRemove(cartItem)}
+                      size={22}
+                    />
+                  </button>
                 </div>
               </div>
             </div>

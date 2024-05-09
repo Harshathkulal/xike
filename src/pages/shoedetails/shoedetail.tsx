@@ -1,8 +1,11 @@
 import { products } from "../../data/product.ts";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
+import { useAppDispatch } from "../../redux/hooks.ts";
+import { addToCart } from "../../redux/cartSlice.ts";
 
 const Shoedetail = () => {
+  const dispatch = useAppDispatch();
   const { id } = useParams<{ id: string }>();
   const product = products.find((e) => e.id.toString() === id);
 
@@ -16,10 +19,26 @@ const Shoedetail = () => {
     "9.5",
     "UK 10",
   ];
+
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
 
   const handleSelectSize = (sizes: string | null) => {
     setSelectedSize(sizes);
+  };
+
+  const HandelAddToCart = () => {
+    if (!product || !selectedSize) return;
+
+    const cartItem = {
+      id: product.id,
+      name: product.name,
+      imageSrc: product.imageSrc,
+      price: parseFloat(product.price),
+      size: selectedSize,
+      quantity: 1,
+    };
+
+    dispatch(addToCart(cartItem));
   };
 
   if (!product) {
@@ -106,13 +125,16 @@ const Shoedetail = () => {
         </div>
         <div className="my-10">
           <div className="flex flex-col gap-3">
-            <div className="rounded-full bg-black text-white font-medium px-28 p-3 py-4 text-lg">
+            <button
+              onClick={HandelAddToCart}
+              className="rounded-full bg-black text-white font-medium px-28 p-3 py-4 text-lg"
+            >
               Add to Bag
-            </div>
+            </button>
 
-            <div className="rounded-full text-black border border-black font-medium px-28 p-3 py-4 text-lg">
+            <button className="rounded-full text-black border border-black font-medium px-28 p-3 py-4 text-lg">
               Favourite
-            </div>
+            </button>
           </div>
         </div>
       </div>

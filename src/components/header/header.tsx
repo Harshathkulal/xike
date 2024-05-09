@@ -7,11 +7,13 @@ import { IoSearchOutline } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
 import { SiJordan } from "react-icons/si";
 import { IoMdHeartEmpty } from "react-icons/io";
+import { useAppSelector } from "../../redux/hooks";
 
 const Header = () => {
   const [sidenav, setSidenav] = useState(false);
   const [search, setSearch] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const cartCount = useAppSelector((state) => state.cart.cartCount);
 
   const toggleSearch = () => {
     setSearch(!search);
@@ -106,7 +108,9 @@ const Header = () => {
           <NavLink to={"cart"}>
             <div className="relative flex mr-6">
               <IoBagOutline size={24} />
-              <div className=" absolute top-1 right-2 text-sm ">{1}</div>
+              <div className=" absolute top-1 right-2 text-sm ">
+                {cartCount}
+              </div>
             </div>
           </NavLink>
 
