@@ -4,8 +4,9 @@ interface CartItem {
   // Define your cart item properties here
   id: number;
   name: string;
-  imageSrc:string,
+  imageSrc: string;
   price: number;
+  size: string;
   quantity: number;
 }
 
@@ -32,17 +33,18 @@ const cartSlice = createSlice({
   } as CartState,
   reducers: {
     addToCart: (state, action: PayloadAction<CartItem>) => {
+      const newItem = action.payload;
       const { id } = action.payload;
       const existingItemIndex = state.cartItems.findIndex(
-        (item) => item.id === id
+        (item) => item.id === id && item.size === newItem.size
       );
-
+      console.log(state, "aaa", action);
       if (existingItemIndex !== -1) {
         // If item with the same ID exists, increment its quantity
         state.cartItems[existingItemIndex].quantity++;
       } else {
         // If item with the same ID doesn't exist, add it to the cart
-        state.cartItems.push(action.payload);
+        state.cartItems.push(newItem);
       }
 
       // Update localStorage
@@ -72,7 +74,7 @@ const cartSlice = createSlice({
     removeFromCart: (state, action: PayloadAction<CartItem>) => {
       const itemToRemove = action.payload;
       const updatedCartItems = state.cartItems.filter(
-        (item) => item.id !== itemToRemove.id
+        (item) => item.id !== itemToRemove.id || item.size !== itemToRemove.size
       );
       localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
       const updatedCartCount = updatedCartItems.reduce(
@@ -85,8 +87,6 @@ const cartSlice = createSlice({
         cartCount: updatedCartCount,
       };
     },
-
-      
 
     decreaseCartItemQuantity: (
       state,
@@ -123,7 +123,7 @@ const cartSlice = createSlice({
     },
   },
 });
- 
+
 export const {
   addToCart,
   updateCart,

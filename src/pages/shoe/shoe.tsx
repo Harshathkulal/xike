@@ -29,7 +29,7 @@ const Shoe = () => {
                 <h3 className="font-bold">{product.name}</h3>
                 <p className="text-gray-500">{product.color}</p>
                 <p className="text-gray-500">1 Colour</p>
-                <p className="font-medium mb-6">MRP: $ {product.price}</p>
+                <p className="font-medium mb-6">MRP: ₹ {product.price}</p>
               </div>
             </Link>
           </div>

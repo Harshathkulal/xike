@@ -3,12 +3,15 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { FaCircleInfo } from "react-icons/fa6";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { removeFromCart } from "../../redux/cartSlice";
+import { Link } from "react-router-dom";
+import { FaArrowRight } from "react-icons/fa";
 
 export interface CartItem {
   id: number;
   name: string;
   imageSrc: string;
   price: number;
+  size: string;
   quantity: number;
 }
 
@@ -17,47 +20,77 @@ const Cart = () => {
   const dispatch = useAppDispatch();
   console.log(cartItems);
 
-  const handleRemove = (cartItem: CartItem) => {
+  const calculateSubtotal = () => {
+    return cartItems.reduce(
+      (total, cartItem) => total + cartItem.price * cartItem.quantity,
+      0
+    );
+  };
+  const subtotal = calculateSubtotal();
 
-      dispatch(removeFromCart(cartItem));
-   
+  const estimatedTax = () => {
+    return subtotal * 0;
+  };
+  const estimatedtax = estimatedTax();
+
+  const OrderTotal = () => {
+    return subtotal + estimatedtax;
+  };
+  const ordertotal = OrderTotal();
+
+  const handleRemove = (cartItem: CartItem) => {
+    dispatch(removeFromCart(cartItem));
   };
 
   return (
     <div className="flex flex-wrap m-2 mt-8 justify-center gap-10">
       <div className="flex flex-col">
         <h1 className="text-2xl font-semibold">Bag</h1>
-        <div className="flex mt-4 flex-col divide-y divide-gray-300">
-          {cartItems.map((cartItem) => (
-            <div className="flex mt-4 pt-4">
-              <div>
-                <img className="h-36 w-36" src={cartItem.imageSrc} alt="" />
-              </div>
-
-              <div className="ml-4 ">
-                <div className="flex justify-between flex-col-reverse lg:flex-row font-semibold">
-                  <h3>{cartItem.name}</h3>
-                  <p className="gap-2">MRP: ₹ {cartItem.price}</p>
+        {cartItems.length === 0 ? (
+          <div className="mr-10">
+            <p className="text-gray-500">There are no items in your bag.</p>
+            <Link to="/shoe" className="text-xs flex items-center mt-4">
+              Continue Shopping <FaArrowRight />
+            </Link>
+          </div>
+        ) : (
+          <div className="flex mt-4 flex-col divide-y divide-gray-300">
+            {cartItems.map((cartItem, index) => (
+              <div key={index} className="flex mt-4 pt-4">
+                <div>
+                  <img className="h-36 w-36" src={cartItem.imageSrc} alt="" />
                 </div>
 
-                <p className="font-medium text-gray-500">Men's Golf Shoes</p>
-                <p className="font-medium text-gray-500 mt-2">Quantity:{cartItem.quantity}</p>
+                <div className="ml-4 ">
+                  <div className="flex justify-between flex-col-reverse lg:flex-row font-semibold">
+                    <h3>{cartItem.name}</h3>
+                    <p className="gap-2">MRP: ₹ {cartItem.price}</p>
+                  </div>
 
-                <div className="flex gap-4 lg:pr-96 mt-8">
-                  <button>
-                    <IoMdHeartEmpty size={22} />
-                  </button>
-                  <button className="cursor-pointer">
-                    <RiDeleteBin6Line
-                      onClick={() => handleRemove(cartItem)}
-                      size={22}
-                    />
-                  </button>
+                  <p className="font-medium text-gray-500">Men's Golf Shoes</p>
+                  <p className="font-medium text-gray-500 mt-2">
+                    Size:{cartItem.size}
+                  </p>
+                  <p className="font-medium text-gray-500 mt-2">
+                    Quantity:{cartItem.quantity}
+                  </p>
+
+                  <div className="flex gap-4 lg:pr-96 mt-8">
+                    <button>
+                      <IoMdHeartEmpty size={22} />
+                    </button>
+                    <button className="cursor-pointer">
+                      <RiDeleteBin6Line
+                        onClick={() => handleRemove(cartItem)}
+                        size={22}
+                      />
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="flex flex-col gap-3 ">
@@ -67,17 +100,17 @@ const Cart = () => {
             Subtotal <FaCircleInfo size={12} className="cursor-pointer" />
           </div>
 
-          <span> ₹{120000}</span>
+          <span> ₹{subtotal}</span>
         </div>
         <div className="flex justify-between font-medium mb-4 text-lg">
           <p>Estimated Delivery & Handling</p>
-          <span> ₹{1200}</span>
+          <span> ₹{"Free"}</span>
         </div>
         <div className="border-t border-slate-300"></div>
 
         <div className="flex justify-between font-medium text-lg">
           <p>Total</p>
-          <span> ₹{12500}</span>
+          <span> ₹{ordertotal}</span>
         </div>
         <div className="border-t border-slate-300"></div>
         <div className="flex flex-col gap-4 mt-10 mb-4">
