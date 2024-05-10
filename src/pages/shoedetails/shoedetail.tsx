@@ -3,31 +3,26 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useAppDispatch } from "../../redux/hooks.ts";
 import { addToCart } from "../../redux/cartSlice.ts";
+import { sizes } from "../../data/size.ts";
 
 const Shoedetail = () => {
   const dispatch = useAppDispatch();
   const { id } = useParams<{ id: string }>();
   const product = products.find((e) => e.id.toString() === id);
 
-  const sizes: string[] = [
-    "UK 6",
-    "UK 7",
-    "UK 7.5",
-    "UK 8",
-    "UK 8.5",
-    "Uk 9",
-    "9.5",
-    "UK 10",
-  ];
-
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [isSizeSelected, setIsSizeSelected] = useState<boolean>(false);
 
   const handleSelectSize = (sizes: string | null) => {
     setSelectedSize(sizes);
+    setIsSizeSelected(false);
   };
 
   const HandelAddToCart = () => {
-    if (!product || !selectedSize) return;
+    if (!product || !selectedSize) {
+      setIsSizeSelected(true); // Reset the size selection state
+      return; // Exit the function if size is not selected
+    }
 
     const cartItem = {
       id: product.id,
@@ -107,7 +102,7 @@ const Shoedetail = () => {
               Size Guide
             </h3>
           </div>
-          <div>
+          <div className="border">
             <div className="grid grid-cols-3 gap-1">
               {sizes.map((size, index) => (
                 <button
@@ -122,6 +117,9 @@ const Shoedetail = () => {
               ))}
             </div>
           </div>
+          {isSizeSelected && !selectedSize && (
+            <p className="text-red-600">Please select a size.</p>
+          )}
         </div>
         <div className="my-10">
           <div className="flex flex-col gap-3">
