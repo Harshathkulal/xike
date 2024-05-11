@@ -11,6 +11,7 @@ export const products = [
         imageAlt: "Nike Dunk Low Retro",
       price: "8695.00",
       gender: "Men's Shoes",
+      type:"Dunk",
     },
     {
       id: 2,
@@ -21,6 +22,7 @@ export const products = [
       imageAlt: "Nike Dunk Low",
       price: "11895.00",
       gender: "Men's Shoes",
+      type:"Dunk",
     },
     {
       id: 3,
@@ -31,6 +33,7 @@ export const products = [
       imageAlt: "Nike Dunk Low Retro",
       price: "6995.00",
       gender: "Men's Shoes",
+      type:"AirForce",
     },
     {
       id: 4,
@@ -41,6 +44,7 @@ export const products = [
       imageAlt: "Nike Dunk Low Retro SE",
       price: "10257.00",
       gender: "Women's Shoes",
+      type:"Dunk",
     },
     {
       id: 5,
@@ -51,6 +55,7 @@ export const products = [
       imageAlt: "Nike Dunk Low Retro",
       price: "8695.00",
       gender: "Mens's Shoes",
+      type:"Dunk",
     },
     // More products...
   ];

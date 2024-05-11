@@ -1,13 +1,111 @@
 import { useState } from "react";
-//import { toast } from "react-toastify";
 import { SiNike } from "react-icons/si";
+import { useAppDispatch } from "../../redux/hooks";
+import { addUser } from "../../redux/userSlice";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null); // State for general errors
-  const [emailError, setEmailError] = useState(null); // State for email-specific errors
-  const [passwordError, setPasswordError] = useState(null); // State for password-specific errors
+  const [error, setError] = useState(""); // State for general errors
+  const [emailError, setEmailError] = useState(""); // State for email-specific errors
+  const [passwordError, setPasswordError] = useState(""); // State for password-specific errors
+  const dispatch = useAppDispatch();
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth();
+
+  const handleGoogleLogin = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    //console.log(auth)
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+        dispatch(
+          addUser({
+            _id: user.uid,
+            name: user.displayName,
+            email: user.email,
+            image: user.photoURL,
+          })
+        );
+        toast.success("Login Successful", {
+          autoClose: 200,
+          closeOnClick: true,
+        });
+
+        // Navigate after successful login
+        const referrer = document.referrer;
+        if (referrer.includes("/cart")) {
+          window.location.href = "/checkout";
+        } else {
+          window.location.href = "/";
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const handleLoginIn = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    setError(""); // Clear general error
+    setEmailError(""); // Clear email-specific error
+    setPasswordError(""); // Clear password-specific error
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        dispatch(
+          addUser({
+            _id: user.uid,
+            name: user.displayName,
+            email: user.email,
+            image: user.photoURL,
+          })
+        );
+        setEmail("");
+        setPassword("");
+        toast.success("Login Successful", {
+          autoClose: 200,
+          closeOnClick: true,
+        });
+
+        // Navigate after successful login
+        const referrer = document.referrer;
+        if (referrer.includes("/cart")) {
+          window.location.href = "/checkout";
+        } else {
+          window.location.href = "/";
+        }
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+
+        if (
+          errorCode === "auth/user-not-found" ||
+          errorCode === "auth/invalid-email"
+        ) {
+          setEmailError("Email Address is wrong");
+        } else if (
+          errorCode === "auth/wrong-password" ||
+          errorCode === "auth/missing-password"
+        ) {
+          setPasswordError("Password is wrong");
+        } else {
+          setError("Email or Password is Wrong");
+        }
+
+        console.log(errorCode, errorMessage);
+      });
+  };
 
   return (
     <>
@@ -44,10 +142,7 @@ const Login = () => {
 
             <div>
               <div className="flex items-center justify-between">
-                <label
-                  htmlFor="password"
-                  className="text-sm font-medium "
-                >
+                <label htmlFor="password" className="text-sm font-medium ">
                   Password
                 </label>
               </div>
@@ -82,7 +177,7 @@ const Login = () => {
 
             <div>
               <button
-                //onClick={handleLoginIn}
+                onClick={handleLoginIn}
                 type="submit"
                 className="flex w-full justify-center rounded-md  px-3 py-1.5 font-semibold bg-black text-white"
               >
@@ -106,7 +201,7 @@ const Login = () => {
           </div>
 
           <button
-            //onClick={handleGoogleLogin}
+            onClick={handleGoogleLogin}
             className="w-full text-center py-3 mb-20 my-3 border flex space-x-2 items-center justify-center border-slate-200 rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow"
           >
             <img

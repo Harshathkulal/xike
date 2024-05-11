@@ -1,11 +1,60 @@
 import { useState } from "react";
 import { SiNike } from "react-icons/si";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-toastify";
+import { useAppDispatch } from "../../redux/hooks";
+import { addUser } from "../../redux/userSlice";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
+  const auth = getAuth();
+  const dispatch = useAppDispatch();
+
+  const handleSignUp = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      console.log(error);
+      return;
+    }
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+    
+        const user = userCredential.user;
+        dispatch(
+          addUser({
+            _id: user.uid,
+            name: user.displayName,
+            email: user.email,
+            image: user.photoURL,
+          })
+        );
+        toast.success("Login Successful", {
+          autoClose: 200,
+          closeOnClick: true,
+        });
+
+        // Navigate after successful login
+        const referrer = document.referrer;
+        if (referrer.includes("/cart")) {
+          window.location.href = "/checkout";
+        } else {
+          window.location.href = "/";
+        }
+      })
+
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error("Signup error:", errorCode, errorMessage);
+        setError(errorMessage);
+      });
+  };
 
   return (
     <>
@@ -97,7 +146,7 @@ const Signup = () => {
 
             <div>
               <button
-                //onClick={handleSignUp}
+                onClick={handleSignUp}
                 type="submit"
                 className="flex w-full justify-center rounded-md  px-3 py-1.5 font-semibold bg-black text-white"
               >

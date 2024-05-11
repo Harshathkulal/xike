@@ -36,19 +36,19 @@ const Header = () => {
         <div className="flex items-center justify-between h-full">
           <div className="hidden lg:block">
             <div className="flex gap-6 justify-center items-center m-4">
-              <NavLink className="font-medium" to={"shoe"}>
+              <NavLink className="font-medium" to={"shoe/"}>
                 New & Featured
               </NavLink>
-              <NavLink className="font-medium" to={"shoe/men"}>
+              <NavLink className="font-medium" to={"shoe/dunk"}>
                 Men
               </NavLink>
-              <NavLink className="font-medium" to={"shoe"}>
+              <NavLink className="font-medium" to={"shoe/"}>
                 Women
               </NavLink>
-              <NavLink className="font-medium" to={"shoe"}>
+              <NavLink className="font-medium" to={"shoe/"}>
                 kids
               </NavLink>
-              <NavLink className="font-medium" to={"shoe"}>
+              <NavLink className="font-medium" to={"shoe/"}>
                 Sales
               </NavLink>
             </div>

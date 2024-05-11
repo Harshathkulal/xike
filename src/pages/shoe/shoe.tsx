@@ -1,19 +1,38 @@
 import { products } from "../../data/product.ts";
-import { SetStateAction, useState } from "react";
-
-import { Link } from "react-router-dom";
-console.log(products)
-
+import { SetStateAction, useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Shoe = () => {
-
+  const location = useLocation();
   const [sortOption, setSortOption] = useState("default");
+  const [filteredProducts, setFilteredProducts] = useState<typeof products>([]);
 
-  const handleSortChange = (e: { target: { value: SetStateAction<string>; }; }) => {
+  console.log(products, "products");
+  console.log(filteredProducts, "filter");
+
+  // Filter products based on route parameter for shoe type
+  useEffect(() => {
+    const shoeType = location.pathname.split("/")[2]; // Extract the shoe type from the route
+    const filtered = products.filter(
+      (product) =>
+        !shoeType ||
+        (product.type && product.type.toLowerCase() === shoeType.toLowerCase())
+    );
+    setFilteredProducts(filtered);
+  }, [location.pathname]);
+
+  //Get path Location and Capitalizing It
+  const shoeType = location.pathname.split("/")[2];
+  const capitalizedShoeType =
+    shoeType.charAt(0).toUpperCase() + shoeType.slice(1);
+
+  const handleSortChange = (e: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setSortOption(e.target.value);
   };
 
-  const sortedProducts = [...products];
+  const sortedProducts = [...filteredProducts];
 
   if (sortOption === "priceLowToHigh") {
     sortedProducts.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
@@ -21,23 +40,16 @@ const Shoe = () => {
     sortedProducts.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
   } // Add more sorting options as needed
 
-
-  const searchTerm="bgyy"
-
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-console.log(filteredProducts,"fil;ter")
-
   return (
     <div className="m-4 lg:p-4">
-      <div className="font-semibold">Shoes/Nike Dunk</div>
+      <div className="font-semibold">Shoes/{capitalizedShoeType}</div>
 
       <div className="flex justify-between mt-4">
-        <div className="text-xl font-semibold">Nike Dunk Shoes</div>
+        <div className="text-xl font-semibold">
+          Xike {capitalizedShoeType} Shoes
+        </div>
         <div className="font-semibold">
-        Sort By{" "}
+          Sort By{" "}
           <select
             value={sortOption}
             onChange={handleSortChange}
@@ -54,10 +66,10 @@ console.log(filteredProducts,"fil;ter")
       <div className="mt-6 grid grid-cols-2 gap-2 lg:grid-cols-3">
         {sortedProducts.map((product) => (
           <div key={product.id} className="Shoe">
-            <Link to={`/shoe/${product.id}`}>
+            <Link to={`/shoe/${product.type}/${product.id}`}>
               <div className="image-box">
                 <img
-                loading="lazy"
+                  loading="lazy"
                   src={product.imageSrc}
                   alt={product.imageAlt}
                   className="relative w-full h-full aspect-square rounded-lg"
