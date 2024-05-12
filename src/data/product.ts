@@ -1,61 +1,246 @@
 export const products = [
-    
-    {
-      id: 1,
-      name: "Nike Dunk Low Retro",
-      feature: "Bestseller",
-      imageSrc:
-        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/d6242443-257d-40af-8f4f-deba3d496eb5/dunk-low-retro-shoes-bCzchX.png",
-        imageSrc1:
-        "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/f5ae7caf-6392-4828-aaa5-1958ef39b8dd/air-jordan-1-low-se-shoes-hgcLbC.png",
-        imageAlt: "Nike Dunk Low Retro",
-      price: "8695.00",
-      gender: "Men's Shoes",
-      type:"Dunk",
-    },
-    {
-      id: 2,
-      name: "Nike Dunk Low",
-      feature: "Just In",
-      imageSrc:
-        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/80aaf2ae-536c-4cb7-891a-9920a3a3af6f/dunk-low-shoes-J0nf5G.png",
-      imageAlt: "Nike Dunk Low",
-      price: "11895.00",
-      gender: "Men's Shoes",
-      type:"Dunk",
-    },
-    {
-      id: 3,
-      name: "Nike Dunk Low Retro",
-      feature: "Bestseller",
-      imageSrc:
-        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/67f23013-f407-46ad-999b-509571a699a3/dunk-low-retro-shoes-bCzchX.png",
-      imageAlt: "Nike Dunk Low Retro",
-      price: "6995.00",
-      gender: "Men's Shoes",
-      type:"AirForce",
-    },
-    {
-      id: 4,
-      name: "Nike Dunk Low Retro SE",
-      feature: "Bestseller",
-      imageSrc:
-        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/5e48bdf3-5ef4-4e25-8208-a84ec255c656/dunk-low-retro-se-shoes-RSrHtr.png",
-      imageAlt: "Nike Dunk Low Retro SE",
-      price: "10257.00",
-      gender: "Women's Shoes",
-      type:"Dunk",
-    },
-    {
-      id: 5,
-      name: "Nike Dunk Low Retro",
-      feature: "Just In",
-      imageSrc:
-        "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/6969944c-c00b-4a59-83e8-7a5e2bb80f12/dunk-low-retro-shoes-69h36X.png",
-      imageAlt: "Nike Dunk Low Retro",
-      price: "8695.00",
-      gender: "Mens's Shoes",
-      type:"Dunk",
-    },
-    // More products...
-  ];
+  {
+    id: 1,
+    name: "Nike Dunk Low Retro",
+    feature: "Bestseller",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/d6242443-257d-40af-8f4f-deba3d496eb5/dunk-low-retro-shoes-bCzchX.png",
+    imageSrc1:
+      "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/f5ae7caf-6392-4828-aaa5-1958ef39b8dd/air-jordan-1-low-se-shoes-hgcLbC.png",
+    imageAlt: "Nike Dunk Low Retro",
+    price: "8695.00",
+    gender: "Men's Shoes",
+    type: "Dunk",
+  },
+  {
+    id: 2,
+    name: "Nike Dunk Low",
+    feature: "Just In",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/80aaf2ae-536c-4cb7-891a-9920a3a3af6f/dunk-low-shoes-J0nf5G.png",
+    imageAlt: "Nike Dunk Low",
+    price: "11895.00",
+    gender: "Men's Shoes",
+    type: "Dunk",
+  },
+  {
+    id: 3,
+    name: "Nike Dunk Low Retro",
+    feature: "Bestseller",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/67f23013-f407-46ad-999b-509571a699a3/dunk-low-retro-shoes-bCzchX.png",
+    imageAlt: "Nike Dunk Low Retro",
+    price: "6995.00",
+    gender: "Men's Shoes",
+    type: "Dunk",
+  },
+  {
+    id: 4,
+    name: "Nike Dunk Low Retro SE",
+    feature: "Bestseller",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/5e48bdf3-5ef4-4e25-8208-a84ec255c656/dunk-low-retro-se-shoes-RSrHtr.png",
+    imageAlt: "Nike Dunk Low Retro SE",
+    price: "10257.00",
+    gender: "Women's Shoes",
+    type: "Dunk",
+  },
+  {
+    id: 5,
+    name: "Nike Dunk Low Retro",
+    feature: "Just In",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/6969944c-c00b-4a59-83e8-7a5e2bb80f12/dunk-low-retro-shoes-69h36X.png",
+    imageAlt: "Nike Dunk Low Retro",
+    price: "8695.00",
+    gender: "Mens's Shoes",
+    type: "Dunk",
+  },
+  {
+    id: 6,
+    name: "Nike Dunk Low Next Nature",
+    feature: "Just In",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/85b683e1-db84-47af-a656-5cfb4b8d5f97/dunk-low-next-nature-shoes-cFQPTp.png",
+    imageAlt: "Nike Dunk Low Next Nature",
+    price: "10799.00",
+    gender: "Mens's Shoes",
+    type: "Dunk",
+  },
+  {
+    id: 7,
+    name: "Nike Dunk Low Retro Premium",
+    feature: "Premium",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/fcba15c3-280c-4ee2-8557-6af9cf93db95/dunk-low-retro-shoes-7h7hLD.png",
+    imageAlt: "Nike Dunk Low Retro Premium",
+    price: "10799.00",
+    gender: "Mens's Shoes",
+    type: "Dunk",
+  },
+  {
+    id: 8,
+    name: "Nike Dunk Low LX",
+    feature: "Premium",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/831c8990-b281-4b49-890e-10c91a7a88eb/dunk-low-lx-shoes-tV8gJG.png",
+    imageAlt: "Nike Dunk Low LX",
+    price: "8999.00",
+    gender: "Mens's Shoes",
+    type: "Dunk",
+  },
+  {
+    id: 9,
+    name: "Air Jordan 1 Mid",
+    feature: "Premium",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/0dde9946-f6fd-4a13-a149-1c2f11ca0b11/air-jordan-1-mid-shoes-SQf7DM.png",
+    imageAlt: "Air Jordan 1 Mid",
+    price: "11495.00",
+    gender: "Mens's Shoes",
+    type: "Jorden-1",
+  },
+  {
+    id: 10,
+    name: "Air Jordan I High G",
+    feature: "Premium",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/7867a4b9-4091-44d2-843a-c7563c60810a/air-jordan-i-high-g-golf-shoes-qKzTBg.png",
+    imageAlt: "Air Jordan I High G",
+    price: "16995.00",
+    gender: "Mens's Shoes",
+    type: "Jorden-1",
+  },
+  {
+    id: 11,
+    name: "Jordan 1 Mid SE",
+    feature: "Just In",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/244e3b9a-0cf6-4ef9-b329-0b569799cbec/jordan-1-mid-se-younger-shoes-Tjsxf9.png",
+    imageAlt: "Jordan 1 Mid SE",
+    price: "6995.00",
+    gender: "Mens's Shoes",
+    type: "Jorden-1",
+  },
+  {
+    id: 12,
+    name: "Air Jordan 1 High Method of Make",
+    feature: "Just In",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/69c35f99-e396-4e98-b2a2-0d9515bdd1f1/air-jordan-1-high-method-of-make-shoes-wvNP62.png",
+    imageAlt: "Air Jordan 1 High Method of Make",
+    price: "15755.00",
+    gender: "Mens's Shoes",
+    type: "Jorden-1",
+  },
+  {
+    id: 13,
+    name: "Air Jordan 1 Mid SE",
+    feature: "Premium",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/b97896a7-3a6d-4b89-b829-0c9d9645d33d/air-jordan-1-mid-se-shoes-4wVkRK.png",
+    imageAlt: "Air Jordan 1 Mid SE",
+    price: "11495.00",
+    gender: "Mens's Shoes",
+    type: "Jorden-1",
+  },
+  {
+    id: 14,
+    name: "Air Jordan 1 Low Method of Make",
+    feature: "Just In",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/e07e8b07-f047-4901-8097-df279c1717ae/air-jordan-1-low-method-of-make-shoes-m6FCTq.png",
+    imageAlt: "Air Jordan 1 Low Method of Make",
+    price: "12295.00",
+    gender: "Mens's Shoes",
+    type: "Jorden-1",
+  },
+  {
+    id: 15,
+    name: "Nike Air Force 1",
+    feature: "Just In",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/0b7c6c17-e399-4e73-a7e0-52c99fe095d5/air-force-1-older-shoes-9FqjR5.png",
+    imageAlt: "Nike Air Force 1",
+    price: "7495.00",
+    gender: "Mens's Shoes",
+    type: "Airforce",
+  },
+  {
+    id: 16,
+    name: "Nike Air Force 1 Low By You",
+    feature: "Just In",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/bd156e13-4888-4999-926e-727b32e8bfd7/hispl-quxm-tvxus.png",
+    imageAlt: "Nike Air Force 1 Low By You",
+    price: "11195.00",
+    gender: "Mens's Shoes",
+    type: "Airforce",
+  },
+  {
+    id: 17,
+    name: "Nike Air Force 1 XE",
+    feature: "Just In",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/60618c33-70df-45c4-98eb-4870f2625b6c/custom-nike-air-force-1-mid-by-you-shoes.png",
+    imageAlt: "Nike Air Force 1",
+    price: "12495.00",
+    gender: "Mens's Shoes",
+    type: "Airforce",
+  },
+  {
+    id: 18,
+    name: "Nike Air Force 1 Shadow",
+    feature: "Just In",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/e6d118a1-7135-4537-81af-7622e24baead/air-force-1-shadow-shoes-DmvLlC.png",
+    imageAlt: "Nike Air Force 1 Shadow",
+    price: "11895.00",
+    gender: "Mens's Shoes",
+    type: "Airforce",
+  },
+  {
+    id: 19,
+    name: "Nike Blazer Low '77 Vintage",
+    feature: "Just In",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/1e31e66c-1ae8-47e3-86f2-b7ba7d75af7b/blazer-low-77-vintage-shoes-tVsDk0.png",
+    imageAlt: "Nike Blazer Low '77 Vintage",
+    price: "9295.00",
+    gender: "Mens's Shoes",
+    type: "Blazer",
+  },
+  {
+    id: 20,
+    name: "Nike SB Zoom Blazer Low Pro GT",
+    feature: "Just In",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/8b209cd1-53d4-4dda-82e1-e888dca2a29a/sb-zoom-blazer-low-pro-gt-skate-shoes-F5FrRW.png",
+    imageAlt: "Nike SB Zoom Blazer Low Pro GT",
+    price: "7095.00",
+    gender: "Mens's Shoes",
+    type: "Blazer",
+  },
+  {
+    id: 21,
+    name: "Nike Blazer Mid '77",
+    feature: "Just In",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/0eb70597-720b-436c-9896-c5b53ec7bf8a/blazer-mid-77-older-shoes-0MLtrL.png",
+    imageAlt: "Nike Blazer Low '77",
+    price: "9995.00",
+    gender: "Mens's Shoes",
+    type: "Blazer",
+  },
+  {
+    id: 22,
+    name: "Nike Blazer Mid Pro Club",
+    feature: "Just In",
+    imageSrc:
+      "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/5b5612dd-bd17-448b-9e3c-34f0c0404c50/blazer-mid-pro-club-shoes-JVTfWh.png",
+    imageAlt: "Nike Blazer Mid Pro Club",
+    price: "14495.00",
+    gender: "Mens's Shoes",
+    type: "Blazer",
+  },
+];

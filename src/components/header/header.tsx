@@ -131,7 +131,7 @@ const Header = () => {
                 </button>
                 <div className="p-6 mt-14">
                   <ul className="flex flex-col font-semibold text-xl leading-relaxed gap-6">
-                    <a href="/shoe">
+                    <a href="/shoe/">
                       <li className="flex items-center justify-between">
                         New & Featured <IoIosArrowForward size={20} />
                       </li>

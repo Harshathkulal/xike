@@ -49,7 +49,10 @@ const Cart = () => {
         {cartItems.length === 0 ? (
           <div className="mr-10">
             <p className="text-gray-500">There are no items in your bag.</p>
-            <Link to="/shoe" className="text-xs flex items-center mt-4">
+            <Link
+              to="/shoe/"
+              className="text-xs flex items-center mt-4 font-medium"
+            >
               Continue Shopping <FaArrowRight />
             </Link>
           </div>
@@ -114,19 +117,19 @@ const Cart = () => {
         </div>
         <div className="border-t border-slate-300"></div>
         <div className="flex flex-col gap-4 mt-10 mb-4">
-          <a
-            href="/signup"
+          <Link
+            to="/checkout"
             className="rounded-full bg-black text-white font-medium px-24 p-3 text-lg"
           >
             Go to Checkout
-          </a>
+          </Link>
 
-          <a
-            href="/signup"
+          <Link
+            to="/checkout"
             className="rounded-full bg-black text-white font-medium px-24 p-3 text-lg hidden lg:block"
           >
             Member Checkout
-          </a>
+          </Link>
         </div>
       </div>
     </div>
