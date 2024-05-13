@@ -7,8 +7,6 @@ const Shoe = () => {
   const [sortOption, setSortOption] = useState("default");
   const [filteredProducts, setFilteredProducts] = useState<typeof products>([]);
 
-  console.log(products, "products");
-  console.log(filteredProducts, "filter");
 
   // Filter products based on route parameter for shoe type
   useEffect(() => {

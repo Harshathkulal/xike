@@ -34,9 +34,19 @@ const Login = () => {
             image: user.photoURL,
           })
         );
-        toast.success("Login Successful", {
+        toast("Login Successfull", {
+          position: "top-center",
           autoClose: 200,
+          hideProgressBar: false,
           closeOnClick: true,
+          pauseOnHover: true,
+          style: {
+            backgroundColor: "white",
+            color: "black",
+            font: "bold",
+            textAlign: "center",
+            fontSize: "24px",
+          },
         });
 
         // Navigate after successful login
@@ -48,7 +58,9 @@ const Login = () => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        toast.error("Google Login Failed");
+        console.error("Google login error:", error);
+      
       });
   };
 

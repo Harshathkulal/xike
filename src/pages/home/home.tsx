@@ -81,7 +81,7 @@ const Home = () => {
           </p>
           <div className="flex gap-2 mt-4">
             <a
-              href="/shoe"
+              href="/shoe/"
               className="rounded-full bg-black text-white font-medium px-4 p-1.5 hover:bg-gray-700"
             >
               Shop Now

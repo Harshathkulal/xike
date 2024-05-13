@@ -18,7 +18,6 @@ export interface CartItem {
 const Cart = () => {
   const cartItems = useAppSelector((state) => state.cart.cartItems);
   const dispatch = useAppDispatch();
-  console.log(cartItems);
 
   const calculateSubtotal = () => {
     return cartItems.reduce(
