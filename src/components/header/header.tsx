@@ -77,6 +77,9 @@ const Header = () => {
               ></div>
               <div className="fixed top-0 left-0  w-screen h-60 bg-white z-30 shadow-lg transition ease-in-out duration-300">
                 <div className="flex justify-center items-center gap-4 mt-4">
+                  <div className="hidden lg:block">
+                    <SiNike size={32} />
+                  </div>
                   <div className="flex border-black border-2 bg-[#f5f5f5] rounded-full items-center w-2/3">
                     <IoSearchOutline size={24} className="text-black" />
                     <input
@@ -90,8 +93,27 @@ const Header = () => {
                     className="font-semibold hover:text-slate-500"
                     onClick={toggleSearch}
                   >
-                    cancel
+                    Cancel
                   </div>
+                </div>
+                <div className="flex ml-8 lg:ml-44 flex-col">
+                  <p className="text-sm text-gray-500 mt-4">
+                    Popular Search Terms
+                  </p>
+                  <ul className="font-medium mt-2 space-y-1">
+                    <li>
+                      <a href="/shoe/dunk">Dunk</a>
+                    </li>
+                    <li>
+                      <a href="/shoe/Airforce">Air Force 1</a>
+                    </li>
+                    <li>
+                      <a href="/shoe/Jorden-1">Jordan</a>
+                    </li>
+                    <li>
+                      <a href="/shoe/Blazer">Blazer</a>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useAppDispatch } from "../../redux/hooks.ts";
 import { addToCart } from "../../redux/cartSlice.ts";
 import { sizes } from "../../data/size.ts";
+import { toast } from "react-toastify";
 
 const Shoedetail = () => {
   const dispatch = useAppDispatch();
@@ -19,6 +20,21 @@ const Shoedetail = () => {
   };
 
   const HandelAddToCart = () => {
+    toast("Added to Cart", {
+      position: "top-center",
+      autoClose: 200,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      style: {
+        backgroundColor: "white",
+        color: "black",
+        font: "bold",
+        textAlign: "center",
+        fontSize: "24px",
+      },
+    });
+
     if (!product || !selectedSize) {
       setIsSizeSelected(true); // Reset the size selection state
       return; // Exit the function if size is not selected

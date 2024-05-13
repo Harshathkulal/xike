@@ -11,6 +11,8 @@ import Shoedetail from "./pages/shoedetails/shoedetail";
 import Checkout from "./pages/checkout/checkout";
 import { useAppSelector } from "./redux/hooks";
 import { ReactNode } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -34,6 +36,7 @@ function App() {
           ></Route>
         </Routes>
         <Footer />
+       <ToastContainer/>
       </BrowserRouter>
     </>
   );

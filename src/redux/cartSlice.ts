@@ -38,7 +38,6 @@ const cartSlice = createSlice({
       const existingItemIndex = state.cartItems.findIndex(
         (item) => item.id === id && item.size === newItem.size
       );
-      console.log(state, "aaa", action);
       if (existingItemIndex !== -1) {
         // If item with the same ID exists, increment its quantity
         state.cartItems[existingItemIndex].quantity++;
