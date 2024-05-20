@@ -20,21 +20,6 @@ const Shoedetail = () => {
   };
 
   const HandelAddToCart = () => {
-    toast("Added to Cart", {
-      position: "top-center",
-      autoClose: 200,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      style: {
-        backgroundColor: "white",
-        color: "black",
-        font: "bold",
-        textAlign: "center",
-        fontSize: "24px",
-      },
-    });
-
     if (!product || !selectedSize) {
       setIsSizeSelected(true); // Reset the size selection state
       return; // Exit the function if size is not selected
@@ -50,6 +35,23 @@ const Shoedetail = () => {
     };
 
     dispatch(addToCart(cartItem));
+    toast("Added to Cart", {
+      position: "top-center",
+      autoClose: 200,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      style: {
+        backgroundColor: "white",
+        color: "black",
+        font: "bold",
+        textAlign: "center",
+        fontSize: "24px",
+      },
+      progressStyle: {
+        backgroundColor: "black",
+      },
+    });
   };
 
   if (!product) {

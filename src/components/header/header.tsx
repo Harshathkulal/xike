@@ -15,8 +15,8 @@ const Header = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const cartCount = useAppSelector((state) => state.cart.cartCount);
 
-  const toggleSearch = () => {
-    setSearch(!search);
+  const toggleSearch = (close = false) => {
+    setSearch(close ? false : !search);
   };
 
   useEffect(() => {
@@ -36,21 +36,21 @@ const Header = () => {
         <div className="flex items-center justify-between h-full">
           <div className="hidden lg:block">
             <div className="flex gap-6 justify-center items-center m-4">
-              <NavLink className="font-medium" to={"shoe/"}>
+              <Link className="font-medium" to={"/shoe/"}>
                 New & Featured
-              </NavLink>
-              <NavLink className="font-medium" to={"shoe/dunk"}>
+              </Link>
+              <Link className="font-medium" to={"shoe/dunk"}>
                 Men
-              </NavLink>
-              <NavLink className="font-medium" to={"shoe/"}>
+              </Link>
+              <Link className="font-medium" to={"shoe/"}>
                 Women
-              </NavLink>
-              <NavLink className="font-medium" to={"shoe/"}>
+              </Link>
+              <Link className="font-medium" to={"shoe/"}>
                 kids
-              </NavLink>
-              <NavLink className="font-medium" to={"shoe/"}>
+              </Link>
+              <Link className="font-medium" to={"shoe/"}>
                 Sales
-              </NavLink>
+              </Link>
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@ const Header = () => {
         <div className="flex m-2 justify-center items-center gap-4">
           <div
             className="hidden border-black border-1 bg-[#f5f5f5] rounded-full items-center p-1 lg:flex"
-            onClick={toggleSearch}
+            onClick={() => toggleSearch(false)}
           >
             <IoSearchOutline size={20} className="text-black m-0.5" />
             <input
@@ -72,7 +72,7 @@ const Header = () => {
           {search && (
             <div>
               <div
-                onClick={toggleSearch}
+                onClick={() => toggleSearch(false)}
                 className="fixed top-0 left-0 w-full h-screen bg-gray-900 bg-opacity-60 blur z-20 transition ease-in-out duration-300"
               ></div>
               <div className="fixed top-0 left-0  w-screen h-60 bg-white z-30 shadow-lg transition ease-in-out duration-300">
@@ -80,18 +80,18 @@ const Header = () => {
                   <div className="hidden lg:block">
                     <SiNike size={32} />
                   </div>
-                  <div className="flex border-black border-2 bg-[#f5f5f5] rounded-full items-center w-2/3">
-                    <IoSearchOutline size={24} className="text-black" />
+                  <div className="flex border-black border-2 bg-[#f5f5f5] rounded-full items-center w-3/4">
+                    <IoSearchOutline size={20} className="text-black" />
                     <input
                       ref={inputRef}
                       type="text"
-                      placeholder="Search..."
+                      placeholder="Search"
                       className="text-black rounded-lg p-1 focus:outline-none bg-[#f5f5f5]"
                     />
                   </div>
                   <div
                     className="font-semibold hover:text-slate-500"
-                    onClick={toggleSearch}
+                    onClick={() => toggleSearch(false)}
                   >
                     Cancel
                   </div>
@@ -102,16 +102,33 @@ const Header = () => {
                   </p>
                   <ul className="font-medium mt-2 space-y-1">
                     <li>
-                      <a href="/shoe/dunk">Dunk</a>
+                      <Link to="/shoe/dunk" onClick={() => toggleSearch(true)}>
+                        Dunk
+                      </Link>
                     </li>
                     <li>
-                      <a href="/shoe/Airforce">Air Force 1</a>
+                      <Link
+                        to="/shoe/Airforce"
+                        onClick={() => toggleSearch(true)}
+                      >
+                        Air Force 1
+                      </Link>
                     </li>
                     <li>
-                      <a href="/shoe/Jorden-1">Jordan</a>
+                      <Link
+                        to="/shoe/Jorden-1"
+                        onClick={() => toggleSearch(true)}
+                      >
+                        Jordan
+                      </Link>
                     </li>
                     <li>
-                      <a href="/shoe/Blazer">Blazer</a>
+                      <Link
+                        to="/shoe/Blazer"
+                        onClick={() => toggleSearch(true)}
+                      >
+                        Blazer
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -122,7 +139,7 @@ const Header = () => {
           <IoSearchOutline
             size={24}
             className="lg:hidden"
-            onClick={toggleSearch}
+            onClick={() => toggleSearch(false)}
           />
           <div className="hidden lg:block">
             <IoMdHeartEmpty size={24} />
@@ -153,11 +170,11 @@ const Header = () => {
                 </button>
                 <div className="p-6 mt-14">
                   <ul className="flex flex-col font-semibold text-xl leading-relaxed gap-6">
-                    <a href="/shoe/">
+                    <Link to="/shoe/" onClick={() => setSidenav(false)}>
                       <li className="flex items-center justify-between">
                         New & Featured <IoIosArrowForward size={20} />
                       </li>
-                    </a>
+                    </Link>
                     <li className="flex items-center justify-between">
                       Men <IoIosArrowForward size={20} />
                     </li>
@@ -183,18 +200,20 @@ const Header = () => {
                   </p>
                 </div>
                 <div className="flex gap-6 m-4">
-                  <a
-                    href="/login"
+                  <Link
+                    to="/login"
                     className="rounded-full bg-black text-white font-medium px-4 p-1"
+                    onClick={() => setSidenav(false)}
                   >
                     Join Us
-                  </a>
-                  <a
-                    href="/signup"
+                  </Link>
+                  <Link
+                    to="/signup"
+                    onClick={() => setSidenav(false)}
                     className="rounded-full border-2 border-black font-semibold px-4 p-1"
                   >
                     Sign In
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
