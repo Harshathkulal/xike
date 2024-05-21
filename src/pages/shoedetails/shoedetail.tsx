@@ -120,7 +120,7 @@ const Shoedetail = () => {
               Size Guide
             </h3>
           </div>
-          <div className="border">
+          <div className="">
             <div className="grid grid-cols-3 gap-1">
               {sizes.map((size, index) => (
                 <button
