@@ -4,6 +4,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "../../redux/hooks";
 import { addUser } from "../../redux/userSlice";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -18,13 +19,11 @@ const Signup = () => {
 
     if (password !== confirmPassword) {
       setError("Passwords do not match");
-      console.log(error);
       return;
     }
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-    
         const user = userCredential.user;
         dispatch(
           addUser({
@@ -135,12 +134,12 @@ const Signup = () => {
                 />
               </div>
               <div className="ml-3 text-sm">
-                <label htmlFor="terms" className="text-black">
+                <p className="text-black flex gap-1">
                   I accept the{" "}
-                  <a className="font-medium  hover:underline" href="#">
+                  <p className="font-medium  hover:underline">
                     Terms and Conditions
-                  </a>
-                </label>
+                  </p>
+                </p>
               </div>
             </div>
 
@@ -156,12 +155,12 @@ const Signup = () => {
 
             <p className="text-sm">
               Already have an account?{" "}
-              <a
-                href="/login"
+              <Link
+                to="/login"
                 className="font-medium text-primary-600 hover:underline dark:text-primary-500"
               >
                 Login Here
-              </a>
+              </Link>
             </p>
           </form>
 

@@ -9,6 +9,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -22,7 +23,6 @@ const Login = () => {
 
   const handleGoogleLogin = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    //console.log(auth)
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user;
@@ -57,10 +57,11 @@ const Login = () => {
           window.location.href = "/";
         }
       })
-      .catch((error) => {
-        toast.error("Google Login Failed");
-        console.error("Google login error:", error);
-      
+      .catch(() => {
+        toast.error("Google Login Failed", {
+          position: "top-center",
+          autoClose: 400,
+        });
       });
   };
 
@@ -99,7 +100,6 @@ const Login = () => {
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
 
         if (
           errorCode === "auth/user-not-found" ||
@@ -114,8 +114,6 @@ const Login = () => {
         } else {
           setError("Email or Password is Wrong");
         }
-
-        console.log(errorCode, errorMessage);
       });
   };
 
@@ -199,12 +197,12 @@ const Login = () => {
 
             <p className="text-sm">
               Dont have an account yet?{" "}
-              <a
-                href="/signup"
+              <Link
+                to="/signup"
                 className="font-medium text-primary-600 hover:underline dark:text-primary-500"
               >
                 Sign up
-              </a>
+              </Link>
             </p>
           </form>
 

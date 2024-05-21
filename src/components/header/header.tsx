@@ -73,7 +73,7 @@ const Header = () => {
             <div>
               <div
                 onClick={() => toggleSearch(false)}
-                className="fixed top-0 left-0 w-full h-screen bg-gray-900 bg-opacity-60 blur z-20 transition ease-in-out duration-300"
+                className="fixed top-0 left-0 w-full h-screen bg-gray-900 bg-opacity-60 blur z-20 transition ease-in-out duration-500"
               ></div>
               <div className="fixed top-0 left-0  w-screen h-60 bg-white z-30 shadow-lg transition ease-in-out duration-300">
                 <div className="flex justify-center items-center gap-4 mt-4">
@@ -160,8 +160,8 @@ const Header = () => {
             className="md:hidden cursor-pointer"
           />
           {sidenav && (
-            <div className="fixed top-0 left-0 w-full h-screen bg-gray-900 bg-opacity-70  z-20 ">
-              <div className="fixed top-0 right-0 w-[85%] h-full bg-white z-30 shadow-lg">
+            <div className="fixed top-0 left-0 w-full h-screen bg-gray-900 bg-opacity-70  z-20">
+              <div className="fixed top-0 right-0 w-[85%] h-full bg-white z-30 shadow-lg transition ease-in-out duration-500 ">
                 <button
                   onClick={() => setSidenav(false)}
                   className="text-black right-2 absolute m-2 top-2"

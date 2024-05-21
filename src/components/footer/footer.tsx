@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaFacebook, FaYoutube, FaTwitter, FaInstagram } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const [help, setHelp] = useState(false);
@@ -81,24 +82,24 @@ const Footer = () => {
           </span>
           <ul className="text-sm font-medium text-gray-500 flex flex-col lg:flex-row gap-4 mt-2">
             <li>
-              <a href="#" className="hover:text-white me-4 md:me-6">
+              <Link to="/" className="hover:text-white me-4 md:me-6">
                 Guides
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-white me-4 md:me-6">
+              <Link to="/" className="hover:text-white me-4 md:me-6">
                 Terms of Sale
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-white me-4 md:me-6">
+              <Link to="/" className="hover:text-white me-4 md:me-6">
                 Terms of Use
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="hover:text-white">
+              <Link to="/" className="hover:text-white">
                 Xike Privacy Policy
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
