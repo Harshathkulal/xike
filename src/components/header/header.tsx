@@ -5,7 +5,7 @@ import { SiNike } from "react-icons/si";
 import { IoBagOutline, IoSearchOutline } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
 import { SiJordan } from "react-icons/si";
-import { IoMdHeartEmpty } from "react-icons/io";
+import { FiHeart } from "react-icons/fi";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 import { logout } from "../../redux/userSlice"; // Import the logout action
 
@@ -17,6 +17,7 @@ const Header = () => {
   const userInfo = useAppSelector((state) => state.user.userInfo); // Access userInfo from the Redux state
   const dispatch = useAppDispatch(); // Use dispatch to log out
   const navigate = useNavigate(); // To redirect after logout
+  const [favoriteActive, setfavoriteActive] = useState(false);
 
   const toggleSearch = (close = false) => {
     setSearch(close ? false : !search);
@@ -32,27 +33,27 @@ const Header = () => {
     dispatch(logout()); // Dispatch logout action
     navigate("/login"); // Redirect to login after logout
   };
+  const favoriteActivefunc = () => {
+    setfavoriteActive(!favoriteActive);
+  };
 
   return (
     <div className="w-full bg-white sticky top-0 z-50 border-b-[1px] border-b-gray-200">
       <div className="bg-gray-100 lg:flex flex-row-reverse text-xs font-semibold p-1 px-6 hidden">
-      {userInfo ? (
-            <button
-              className="font-medium"
-              onClick={handleLogout}
-            >
-              Logout
-            </button>
-          ) : (
-            <Link
-              to="/login"
-              className="font-medium"
-              onClick={() => setSidenav(false)}
-            >
-              Login
-            </Link>
-          )}
-          <p className="px-1">Help | </p>
+        {userInfo ? (
+          <button className="font-medium" onClick={handleLogout}>
+            Logout
+          </button>
+        ) : (
+          <Link
+            to="/login"
+            className="font-medium"
+            onClick={() => setSidenav(false)}
+          >
+            Login
+          </Link>
+        )}
+        <p className="px-1">Help | </p>
       </div>
       <nav className="flex justify-between mx-2 m-1">
         <Link to="/">
@@ -168,8 +169,11 @@ const Header = () => {
             className="lg:hidden"
             onClick={() => toggleSearch(false)}
           />
-          <div className="hidden lg:block">
-            <IoMdHeartEmpty size={24} />
+          <div
+            className="hidden lg:block cursor-pointer"
+            onClick={favoriteActivefunc}
+          >
+            <FiHeart fill={favoriteActive ? "red" : "none"} size={24} />
           </div>
           <NavLink to={"cart"}>
             <div className="relative flex mr-6">
@@ -212,9 +216,11 @@ const Header = () => {
                 New & Featured <IoIosArrowForward size={20} />
               </li>
             </Link>
-            <li className="flex items-center justify-between">
-              Men <IoIosArrowForward size={20} />
-            </li>
+            <Link to="/shoe/" onClick={() => setSidenav(false)}>
+              <li className="flex items-center justify-between">
+                Men <IoIosArrowForward size={20} />
+              </li>
+            </Link>
             <li className="flex items-center justify-between">
               Women <IoIosArrowForward size={20} />
             </li>
