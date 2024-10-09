@@ -3,7 +3,7 @@ import { SiNike } from "react-icons/si";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "../../redux/hooks";
-import { addUser } from "../../redux/userSlice";
+import { login } from "../../redux/userSlice";
 import { Link } from "react-router-dom";
 
 const Signup = () => {
@@ -26,7 +26,7 @@ const Signup = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         dispatch(
-          addUser({
+          login({
             _id: user.uid,
             name: user.displayName,
             email: user.email,

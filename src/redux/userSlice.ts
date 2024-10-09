@@ -20,17 +20,17 @@ const userSlice = createSlice({
     userInfo: initialUserInfo,
   } as UserState,
   reducers: {
-    addUser: (state, action: PayloadAction<UserInfo>) => {
+    login: (state, action: PayloadAction<UserInfo>) => {
       state.userInfo = action.payload;
       localStorage.setItem("userInfo", JSON.stringify(action.payload));
     },
-    removeUser: (state) => {
+    logout: (state) => {
       state.userInfo = null;
       localStorage.removeItem("userInfo");
     },
   },
 });
 
-export const { addUser, removeUser } = userSlice.actions;
+export const { login, logout } = userSlice.actions;
 
 export default userSlice.reducer;

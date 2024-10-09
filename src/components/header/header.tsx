@@ -1,18 +1,22 @@
 import { useEffect, useState, useRef } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { SiNike } from "react-icons/si";
 import { IoBagOutline, IoSearchOutline } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
 import { SiJordan } from "react-icons/si";
 import { IoMdHeartEmpty } from "react-icons/io";
-import { useAppSelector } from "../../redux/hooks";
+import { useAppSelector, useAppDispatch } from "../../redux/hooks";
+import { logout } from "../../redux/userSlice"; // Import the logout action
 
 const Header = () => {
   const [sidenav, setSidenav] = useState(false);
   const [search, setSearch] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const cartCount = useAppSelector((state) => state.cart.cartCount);
+  const userInfo = useAppSelector((state) => state.user.userInfo); // Access userInfo from the Redux state
+  const dispatch = useAppDispatch(); // Use dispatch to log out
+  const navigate = useNavigate(); // To redirect after logout
 
   const toggleSearch = (close = false) => {
     setSearch(close ? false : !search);
@@ -24,8 +28,32 @@ const Header = () => {
     }
   }, [search]);
 
+  const handleLogout = () => {
+    dispatch(logout()); // Dispatch logout action
+    navigate("/login"); // Redirect to login after logout
+  };
+
   return (
     <div className="w-full bg-white sticky top-0 z-50 border-b-[1px] border-b-gray-200">
+      <div className="bg-gray-100 lg:flex flex-row-reverse text-xs font-semibold p-1 px-6 hidden">
+      {userInfo ? (
+            <button
+              className="font-medium"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          ) : (
+            <Link
+              to="/login"
+              className="font-medium"
+              onClick={() => setSidenav(false)}
+            >
+              Login
+            </Link>
+          )}
+          <p className="px-1">Help | </p>
+      </div>
       <nav className="flex justify-between mx-2 m-1">
         <Link to="/">
           <div>
@@ -207,20 +235,22 @@ const Header = () => {
           </p>
         </div>
         <div className="flex gap-6 m-4">
-          <Link
-            to="/login"
-            className="rounded-full bg-black text-white font-medium px-4 p-1"
-            onClick={() => setSidenav(false)}
-          >
-            Join Us
-          </Link>
-          <Link
-            to="/signup"
-            onClick={() => setSidenav(false)}
-            className="rounded-full border-2 border-black font-semibold px-4 p-1"
-          >
-            Sign In
-          </Link>
+          {userInfo ? (
+            <button
+              className="rounded-full bg-black text-white font-medium px-4 py-1"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          ) : (
+            <Link
+              to="/login"
+              className="rounded-full bg-black text-white font-medium px-4 p-1"
+              onClick={() => setSidenav(false)}
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>

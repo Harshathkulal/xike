@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { SiNike } from "react-icons/si";
 import { useAppDispatch } from "../../redux/hooks";
-import { addUser } from "../../redux/userSlice";
+import { login } from "../../redux/userSlice";
 import {
   GoogleAuthProvider,
   getAuth,
@@ -27,7 +27,7 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         dispatch(
-          addUser({
+          login({
             _id: user.uid,
             name: user.displayName,
             email: user.email,
@@ -76,7 +76,7 @@ const Login = () => {
         // Signed in
         const user = userCredential.user;
         dispatch(
-          addUser({
+          login({
             _id: user.uid,
             name: user.displayName,
             email: user.email,
