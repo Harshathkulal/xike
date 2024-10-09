@@ -2,8 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { SiNike } from "react-icons/si";
-import { IoBagOutline } from "react-icons/io5";
-import { IoSearchOutline } from "react-icons/io5";
+import { IoBagOutline, IoSearchOutline } from "react-icons/io5";
 import { IoIosArrowForward } from "react-icons/io";
 import { SiJordan } from "react-icons/si";
 import { IoMdHeartEmpty } from "react-icons/io";
@@ -26,11 +25,11 @@ const Header = () => {
   }, [search]);
 
   return (
-    <div className="w-full bg-white sticky top-0 z-50 border-b-[1px] border-b-gray-200 ">
+    <div className="w-full bg-white sticky top-0 z-50 border-b-[1px] border-b-gray-200">
       <nav className="flex justify-between mx-2 m-1">
         <Link to="/">
           <div>
-            <SiNike size={48} className=" ml-4" />
+            <SiNike size={48} className="ml-4" />
           </div>
         </Link>
         <div className="flex items-center justify-between h-full">
@@ -46,7 +45,7 @@ const Header = () => {
                 Women
               </Link>
               <Link className="font-medium" to={"shoe/"}>
-                kids
+                Kids
               </Link>
               <Link className="font-medium" to={"shoe/"}>
                 Sales
@@ -64,7 +63,7 @@ const Header = () => {
             <input
               ref={inputRef}
               type="text"
-              placeholder="  Search"
+              placeholder="Search"
               className="text-black rounded-lg m-0.5 focus:outline-none bg-[#f5f5f5]"
             />
           </div>
@@ -75,7 +74,7 @@ const Header = () => {
                 onClick={() => toggleSearch(false)}
                 className="fixed top-0 left-0 w-full h-screen bg-gray-900 bg-opacity-60 blur z-20 transition ease-in-out duration-500"
               ></div>
-              <div className="fixed top-0 left-0  w-screen h-60 bg-white z-30 shadow-lg transition ease-in-out duration-300">
+              <div className="fixed top-0 left-0 w-screen h-60 bg-white z-30 shadow-lg transition ease-in-out duration-300">
                 <div className="flex justify-center items-center gap-4 mt-4">
                   <div className="hidden lg:block">
                     <SiNike size={32} />
@@ -116,7 +115,7 @@ const Header = () => {
                     </li>
                     <li>
                       <Link
-                        to="/shoe/Jorden-1"
+                        to="/shoe/Jordan-1"
                         onClick={() => toggleSearch(true)}
                       >
                         Jordan
@@ -147,79 +146,83 @@ const Header = () => {
           <NavLink to={"cart"}>
             <div className="relative flex mr-6">
               <IoBagOutline size={24} />
-              <div className=" absolute top-1 right-2 text-sm ">
-                {cartCount}
-              </div>
+              <div className="absolute top-1 right-2 text-sm">{cartCount}</div>
             </div>
           </NavLink>
 
           {/* Mobile View */}
           <AiOutlineMenu
             size={24}
-            onClick={() => setSidenav(!sidenav)}
+            onClick={() => setSidenav(true)}
             className="md:hidden cursor-pointer"
           />
-          {sidenav && (
-            <div className="fixed top-0 left-0 w-full h-screen bg-gray-900 bg-opacity-70  z-20">
-              <div className="fixed top-0 right-0 w-[85%] h-full bg-white z-30 shadow-lg transition ease-in-out duration-500 ">
-                <button
-                  onClick={() => setSidenav(false)}
-                  className="text-black right-2 absolute m-2 top-2"
-                >
-                  <AiOutlineClose size={24} />
-                </button>
-                <div className="p-6 mt-14">
-                  <ul className="flex flex-col font-semibold text-xl leading-relaxed gap-6">
-                    <Link to="/shoe/" onClick={() => setSidenav(false)}>
-                      <li className="flex items-center justify-between">
-                        New & Featured <IoIosArrowForward size={20} />
-                      </li>
-                    </Link>
-                    <li className="flex items-center justify-between">
-                      Men <IoIosArrowForward size={20} />
-                    </li>
-                    <li className="flex items-center justify-between">
-                      Women <IoIosArrowForward size={20} />
-                    </li>
-                    <li className="flex items-center justify-between">
-                      Kid <IoIosArrowForward size={20} />
-                    </li>
-                  </ul>
-                </div>
-                <div className="flex gap-2 m-4 font-semibold ml-8">
-                  <SiJordan size={26} />
-                  Jordan
-                </div>
-                <div className="mt-10 p-4">
-                  <p className="font-medium text-gray-500">
-                    Become a Xike Member for the best products, inspiration and
-                    stories in.
-                    <span className="text-black hover:font-bold">
-                      Learn more{" "}
-                    </span>
-                  </p>
-                </div>
-                <div className="flex gap-6 m-4">
-                  <Link
-                    to="/login"
-                    className="rounded-full bg-black text-white font-medium px-4 p-1"
-                    onClick={() => setSidenav(false)}
-                  >
-                    Join Us
-                  </Link>
-                  <Link
-                    to="/signup"
-                    onClick={() => setSidenav(false)}
-                    className="rounded-full border-2 border-black font-semibold px-4 p-1"
-                  >
-                    Sign In
-                  </Link>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </nav>
+
+      {/* Side Navigation */}
+      <div
+        className={`fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-70 z-20 transition-opacity duration-500 ease-in-out ${
+          sidenav ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => setSidenav(false)}
+      ></div>
+      <div
+        className={`fixed top-0 right-0 w-[85%] h-full bg-white z-30 shadow-lg transform transition-transform duration-500 ease-in-out ${
+          sidenav ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <button
+          onClick={() => setSidenav(false)}
+          className="text-black right-2 absolute m-2 top-2"
+        >
+          <AiOutlineClose size={24} />
+        </button>
+        <div className="p-6 mt-14">
+          <ul className="flex flex-col font-semibold text-xl leading-relaxed gap-6">
+            <Link to="/shoe/" onClick={() => setSidenav(false)}>
+              <li className="flex items-center justify-between">
+                New & Featured <IoIosArrowForward size={20} />
+              </li>
+            </Link>
+            <li className="flex items-center justify-between">
+              Men <IoIosArrowForward size={20} />
+            </li>
+            <li className="flex items-center justify-between">
+              Women <IoIosArrowForward size={20} />
+            </li>
+            <li className="flex items-center justify-between">
+              Kids <IoIosArrowForward size={20} />
+            </li>
+          </ul>
+        </div>
+        <div className="flex gap-2 m-4 font-semibold ml-8">
+          <SiJordan size={26} />
+          Jordan
+        </div>
+        <div className="mt-10 p-4">
+          <p className="font-medium text-gray-500">
+            Become a Xike Member for the best products, inspiration and stories
+            in.
+            <span className="text-black hover:font-bold"> Learn more </span>
+          </p>
+        </div>
+        <div className="flex gap-6 m-4">
+          <Link
+            to="/login"
+            className="rounded-full bg-black text-white font-medium px-4 p-1"
+            onClick={() => setSidenav(false)}
+          >
+            Join Us
+          </Link>
+          <Link
+            to="/signup"
+            onClick={() => setSidenav(false)}
+            className="rounded-full border-2 border-black font-semibold px-4 p-1"
+          >
+            Sign In
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
