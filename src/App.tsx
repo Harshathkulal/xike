@@ -22,30 +22,59 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<PageWrapper><Home /></PageWrapper>}
+            element={
+              <PageWrapper>
+                <Home />
+              </PageWrapper>
+            }
           />
           <Route
             path="/shoe/*"
-            element={<PageWrapper><Shoe /></PageWrapper>}
+            element={
+              <PageWrapper>
+                <Shoe />
+              </PageWrapper>
+            }
           />
-          <Route path="/shoe/:type/:id" element={<PageWrapper><Shoedetail /></PageWrapper>}></Route>
+          <Route
+            path="/shoe/:type/:id"
+            element={
+              <PageWrapper>
+                <Shoedetail />
+              </PageWrapper>
+            }
+          ></Route>
           <Route
             path="/login"
-            element={<PageWrapper><Login /></PageWrapper>}
+            element={
+              <PageWrapper>
+                <Login />
+              </PageWrapper>
+            }
           />
           <Route
             path="/signup"
-            element={<PageWrapper><Signup /></PageWrapper>}
+            element={
+              <PageWrapper>
+                <Signup />
+              </PageWrapper>
+            }
           />
           <Route
             path="/cart"
-            element={<PageWrapper><Cart /></PageWrapper>}
+            element={
+              <PageWrapper>
+                <Cart />
+              </PageWrapper>
+            }
           />
           <Route
             path="/checkout"
             element={
               <ProtectedRoute>
-                <PageWrapper><Checkout /></PageWrapper>
+                <PageWrapper>
+                  <Checkout />
+                </PageWrapper>
               </ProtectedRoute>
             }
           />
@@ -58,7 +87,6 @@ function App() {
 }
 
 export default App;
-
 
 interface ProtectedRouteProps {
   children: ReactNode;
