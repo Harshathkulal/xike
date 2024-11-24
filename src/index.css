@@ -8,4 +8,6 @@
   --toastify-color-progress-light: black; 
 }
 
-
+html {
+  scroll-behavior: smooth;
+}

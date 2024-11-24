@@ -7,7 +7,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { SiJordan } from "react-icons/si";
 import { FiHeart } from "react-icons/fi";
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
-import { logout } from "../../redux/userSlice"; // Import the logout action
+import { logout } from "../../redux/userSlice";
 
 const Header = () => {
   const [sidenav, setSidenav] = useState(false);

@@ -12,36 +12,53 @@ import { useAppSelector } from "./redux/hooks";
 import { ReactNode } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PageWrapper from "./components/PageWrapper";
 
 function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Header />
+    <BrowserRouter>
+      <Header />
+      <div className="relative">
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/shoe/*" element={<Shoe />}></Route>
-          <Route path="/shoe/:type/:id" element={<Shoedetail />}></Route>
-          <Route path="/login" element={<Login />}></Route>
-          <Route path="/signup" element={<Signup />}></Route>
-          <Route path="/cart" element={<Cart />}></Route>
+          <Route
+            path="/"
+            element={<PageWrapper><Home /></PageWrapper>}
+          />
+          <Route
+            path="/shoe/*"
+            element={<PageWrapper><Shoe /></PageWrapper>}
+          />
+          <Route path="/shoe/:type/:id" element={<PageWrapper><Shoedetail /></PageWrapper>}></Route>
+          <Route
+            path="/login"
+            element={<PageWrapper><Login /></PageWrapper>}
+          />
+          <Route
+            path="/signup"
+            element={<PageWrapper><Signup /></PageWrapper>}
+          />
+          <Route
+            path="/cart"
+            element={<PageWrapper><Cart /></PageWrapper>}
+          />
           <Route
             path="/checkout"
             element={
               <ProtectedRoute>
-                <Checkout />
+                <PageWrapper><Checkout /></PageWrapper>
               </ProtectedRoute>
             }
-          ></Route>
+          />
         </Routes>
-        <Footer />
-       <ToastContainer/>
-      </BrowserRouter>
-    </>
+      </div>
+      <Footer />
+      <ToastContainer />
+    </BrowserRouter>
   );
 }
 
 export default App;
+
 
 interface ProtectedRouteProps {
   children: ReactNode;

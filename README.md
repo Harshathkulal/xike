@@ -9,5 +9,3 @@ Features:
  * And much more!
 
 ![XikePage](https://github.com/Harshathkulal/xike/assets/130536991/7fe01032-7755-482d-8767-6608abf1c7c1)
-
-
